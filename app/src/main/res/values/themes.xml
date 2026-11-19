@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  M6 深浅两套主题。
+  - 只在「用户手动选 / 跟随系统」时二选一，BaseActivity 在 setContentView 之前 setTheme；
+  - 所有界面颜色通过 yy* 自定义属性取，布局不用写死颜色；
+  - 深色底偏黑灰（#17191C，不做纯黑），浅色底偏暖白（#FAF7F2）。
+-->
+<resources>
+
+    <style name="AppThemeLight" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/yy_accent_light</item>
+        <item name="android:colorPrimaryDark">@color/yy_bg_light</item>
+        <item name="android:colorAccent">@color/yy_accent_light</item>
+        <item name="android:windowBackground">@color/yy_bg_light</item>
+        <item name="android:statusBarColor">@color/yy_bg_light</item>
+        <item name="android:navigationBarColor">@color/yy_bg_light</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+
+        <item name="yyBg">@color/yy_bg_light</item>
+        <item name="yySurface">@color/yy_surface_light</item>
+        <item name="yySurfaceAlt">@color/yy_surface_alt_light</item>
+        <item name="yyText">@color/yy_text_light</item>
+        <item name="yyTextSecondary">@color/yy_text2_light</item>
+        <item name="yyDivider">@color/yy_divider_light</item>
+        <item name="yyAccent">@color/yy_accent_light</item>
+        <item name="yyBubbleHim">@color/yy_bubble_him_light</item>
+        <item name="yyBubbleHimText">@color/yy_bubble_him_text_light</item>
+        <item name="yyBubbleMe">@color/yy_bubble_me_light</item>
+        <item name="yyBubbleMeText">@color/yy_bubble_me_text_light</item>
+        <item name="yyIcon">@color/yy_icon_light</item>
+        <item name="yyHoldBg">@color/yy_hold_light</item>
+        <item name="yyHoldText">@color/yy_hold_text_light</item>
+        <item name="yyDanger">@color/yy_danger_light</item>
+        <item name="yyOk">@color/yy_ok_light</item>
+        <item name="yyWarn">@color/yy_warn_light</item>
+    </style>
+
+    <style name="AppThemeDark" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">@color/yy_accent_dark</item>
+        <item name="android:colorPrimaryDark">@color/yy_bg_dark</item>
+        <item name="android:colorAccent">@color/yy_accent_dark</item>
+        <item name="android:windowBackground">@color/yy_bg_dark</item>
+        <item name="android:statusBarColor">@color/yy_bg_dark</item>
+        <item name="android:navigationBarColor">@color/yy_bg_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+
+        <item name="yyBg">@color/yy_bg_dark</item>
+        <item name="yySurface">@color/yy_surface_dark</item>
+        <item name="yySurfaceAlt">@color/yy_surface_alt_dark</item>
+        <item name="yyText">@color/yy_text_dark</item>
+        <item name="yyTextSecondary">@color/yy_text2_dark</item>
+        <item name="yyDivider">@color/yy_divider_dark</item>
+        <item name="yyAccent">@color/yy_accent_dark</item>
+        <item name="yyBubbleHim">@color/yy_bubble_him_dark</item>
+        <item name="yyBubbleHimText">@color/yy_bubble_him_text_dark</item>
+        <item name="yyBubbleMe">@color/yy_bubble_me_dark</item>
+        <item name="yyBubbleMeText">@color/yy_bubble_me_text_dark</item>
+        <item name="yyIcon">@color/yy_icon_dark</item>
+        <item name="yyHoldBg">@color/yy_hold_dark</item>
+        <item name="yyHoldText">@color/yy_hold_text_dark</item>
+        <item name="yyDanger">@color/yy_danger_dark</item>
+        <item name="yyOk">@color/yy_ok_dark</item>
+        <item name="yyWarn">@color/yy_warn_dark</item>
+    </style>
+
+    <!-- 兼容旧引用：默认浅色 -->
+    <style name="AppTheme" parent="@style/AppThemeLight" />
+</resources>
+

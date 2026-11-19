@@ -1,0 +1,8 @@
+# vendor 的 ws 随包走（别人拿到目录不用 npm install）；其余 node_modules 仍忽略
+node_modules/*
+!node_modules/ws/
+!node_modules/ws/**
+data/
+tmp/
+.env
+*.log

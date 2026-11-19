@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  M5c 浮层的「最近一条命令结果」临时小条（M5c 第二轮按 expG09 反馈改）：
+  不常驻、不参与方块布局——它是**另一个** WindowManager 窗口（不抢触摸），
+  出现在方块左侧或右侧，2.5 秒自动收起，所以方块永远是 60dp 的方块，不会被撑大。
+  窗口尺寸固定（176×32dp），文字单行省略。
+-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_overlay_strip"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_strip"
+    android:ellipsize="end"
+    android:gravity="center_vertical"
+    android:maxLines="1"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:text="@string/overlay_no_command"
+    android:textColor="#FFFFFFFF"
+    android:textSize="11sp" />

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Phone bridge",
+    "description": "Forwards one sentence from the phone channel into a pinned session, refusing with 409 when no session is bound, and hosts channel-server from the \"语音通道\" settings panel: runtime status, start and stop, session binding, a 6-digit pairing code, paired devices, the voice provider with a masked API key, and the last dozen log lines. Listens on 127.0.0.1 only; the panel API accepts same-origin local requests only and never logs message text or keys."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "channel-server",
+  "version": "0.5.0",
+  "private": true,
+  "description": "Channel server: pairing + WebSocket (proto 1/2) + audio upload with DeepSeek ASR + M5 intent parsing and command dispatch",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "node server.js --dev",
+    "test:client": "node test/client.js",
+    "test:intent": "node test/intent-test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- M5b 快捷栏每格的底：浅灰圆角 + 点按涟漪（给人「这里能点」的反馈） -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#33000000">
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#F3F3F3" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+</ripple>

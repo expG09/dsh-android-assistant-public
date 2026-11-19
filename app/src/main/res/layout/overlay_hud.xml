@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  M5c 悬浮浮层 —— 第一版的**竖装**结构，只把宽度砍半（2026-11-16 expG09 定）。
+
+  ┌──────────────────┐
+  │     监听中        │  ← 上：宽的状态条（30dp，一行字），**这一段是拖动区**
+  │   ┌──────────┐   │
+  │   │ 按住说话  │   │  ← 下：明显更高的按钮块（58×46dp，比上面窄）
+  │   └──────────┘   │
+  └──────────────────┘
+
+  尺寸：整条 78dp 宽（第一版 148dp 的一半）× 约 82dp 高。
+  边距：左右 4dp、下 4dp 是窄边；上面状态条就是那条「宽的边」（贴到卡片顶边）。
+  配色：黑底 + 蓝按钮 + 浅灰白文字（与第一版一致），常量在 OverlayController.kt 里；
+        三态**只靠文字**区分（监听中 / 录音中 3s / 空闲，另有暂停、异常），不做彩色块、不做圆点。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlay_root"
+    android:layout_width="78dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_overlay"
+    android:orientation="vertical"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:paddingBottom="4dp">
+
+    <TextView
+        android:id="@+id/tv_overlay_state"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/overlay_status_idle"
+        android:textColor="#FFE8EEF6"
+        android:textSize="9sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_overlay_hold"
+        android:layout_width="58dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="#2F6FED"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:padding="0dp"
+        android:text="@string/overlay_hold_btn"
+        android:textColor="#FFFFFFFF"
+        android:textSize="10sp" />
+
+</LinearLayout>

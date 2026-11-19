@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- M6 两套主题的调色板（深色偏黑灰、浅色偏暖白；气泡两套各配一组，不硬套同一套色） -->
+<resources>
+    <!-- 浅色 · 暖白 -->
+    <color name="yy_bg_light">#FAF7F2</color>
+    <color name="yy_surface_light">#FFFFFF</color>
+    <color name="yy_surface_alt_light">#F0EBE3</color>
+    <color name="yy_text_light">#20242B</color>
+    <color name="yy_text2_light">#6C7480</color>
+    <color name="yy_divider_light">#E4DED3</color>
+    <color name="yy_accent_light">#2F6FED</color>
+    <color name="yy_bubble_him_light">#E5EDFB</color>
+    <color name="yy_bubble_him_text_light">#152238</color>
+    <color name="yy_bubble_me_light">#FBEAD3</color>
+    <color name="yy_bubble_me_text_light">#3B2A16</color>
+    <color name="yy_icon_light">#5E6672</color>
+    <color name="yy_hold_light">#2F6FED</color>
+    <color name="yy_hold_text_light">#FFFFFF</color>
+    <color name="yy_danger_light">#C0392B</color>
+    <color name="yy_ok_light">#1E8E5A</color>
+    <color name="yy_warn_light">#B46A00</color>
+
+    <!-- 深色 · 近黑灰（不做纯黑） -->
+    <color name="yy_bg_dark">#17191C</color>
+    <color name="yy_surface_dark">#202327</color>
+    <color name="yy_surface_alt_dark">#282C31</color>
+    <color name="yy_text_dark">#E9EBEF</color>
+    <color name="yy_text2_dark">#9AA2AC</color>
+    <color name="yy_divider_dark">#2E3237</color>
+    <color name="yy_accent_dark">#7CA6FF</color>
+    <color name="yy_bubble_him_dark">#28323F</color>
+    <color name="yy_bubble_him_text_dark">#E6EDF7</color>
+    <color name="yy_bubble_me_dark">#3A332A</color>
+    <color name="yy_bubble_me_text_dark">#F2E8DA</color>
+    <color name="yy_icon_dark">#A7AFB9</color>
+    <color name="yy_hold_dark">#3D6FDB</color>
+    <color name="yy_hold_text_dark">#FFFFFF</color>
+    <color name="yy_danger_dark">#FF8A7A</color>
+    <color name="yy_ok_dark">#5ED39A</color>
+    <color name="yy_warn_dark">#F0B55C</color>
+</resources>

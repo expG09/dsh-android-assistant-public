@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  M6 主界面：只做两件事 —— 显示关键状态、放几个功能按钮（见 decision.md「主界面」）。
+  配置项全部挪进设置二级页，这里一个都不留。
+  结构：状态条 → 快捷栏（可收起） → 按住说话 → 进入聊天。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/yyBg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_topbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="24dp">
+
+            <!-- 状态条：监听 / 通道 / 录音中 N 秒 / 最近一条命令，全部只读 -->
+            <LinearLayout
+                android:id="@+id/card_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_listen_dot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="●"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_listen_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="未监听"
+                        android:textColor="?attr/yyText"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_listen_detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="2"
+                        android:textColor="?attr/yyTextSecondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_channel_dot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="●"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_channel_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="通道未连"
+                        android:textColor="?attr/yyText"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_channel_detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="2"
+                        android:textColor="?attr/yyTextSecondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_record_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="录音：空闲"
+                    android:textColor="?attr/yyText"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_last_command"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="?attr/yyTextSecondary"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btn_service_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:text="常驻服务未运行 · 点此启动"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- 快捷栏：可收起（收起状态持久化，见 decision.md 2026-11-16） -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="快捷栏"
+                    android:textColor="?attr/yyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btn_quick_toggle"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="收起或展开快捷栏"
+                    android:padding="12dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_chevron_down" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_quick_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点一下直接打开 · 长按换应用 · 右上角箭头收起"
+                android:textColor="?attr/yyTextSecondary"
+                android:textSize="12sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/hsv_quick_slots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/ll_quick_slots"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tv_quick_collapsed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="快捷栏已收起（点右上角箭头展开）"
+                android:textColor="?attr/yyTextSecondary"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <!-- 按住说话：唤醒词自动录音时同一位置变「停止」，按住期间文案不变 -->
+            <Button
+                android:id="@+id/btn_hold_talk"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_marginTop="22dp"
+                android:text="按住说话"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_hold_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="2dp"
+                android:textColor="?attr/yyTextSecondary"
+                android:textSize="12sp" />
+
+            <!-- 进入聊天的入口：主界面唯一一个「跳页」按钮 -->
+            <LinearLayout
+                android:id="@+id/btn_chat_entry"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_chat_entry"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="聊天"
+                    android:src="@drawable/ic_chat" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:text="进入聊天"
+                    android:textColor="?attr/yyText"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="?attr/yyTextSecondary"
+                    android:textSize="22sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

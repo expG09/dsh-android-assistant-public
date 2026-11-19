@@ -1,0 +1,43 @@
+# phone-bridge：手机通道 → 本机当前会话，并托管 channel-server + 设置页「语音通道」。
+#
+# 这一行把插件插进宿主。改了这里的 config 就等于改插件配置；
+# 想在不改本包的前提下覆盖，就在 profile 的 cordis.patch.yml 里按 id 覆盖同一个行。
+#
+# 共享密钥（PHONE_BRIDGE_TOKEN）与 DEEPSEEK_API_KEY 都从**插件自己算出的**
+# channel-server\.env 读（相对本包目录的 ..\channel-server\.env），密钥不落在本包配置里、
+# 不进仓库；面板写 key 也只写那个 .env。
+#
+# 托管路径固定为 ..\channel-server\server.js —— 面板只能「启动 / 停止」它，
+# 不能改路径、不能拼参数（端口除外，且只来自这里配置的整数）。
+- insert:
+    - id: phone-bridge
+      name: '@local/phone-bridge'
+      config:
+        host: 127.0.0.1
+        port: 8795
+        path: /m7/ask
+        tokenEnv: PHONE_BRIDGE_TOKEN
+        # 留空 = 用插件算出的 <插件目录>\..\channel-server\.env；要指别处才填
+        tokenFile: ''
+        # 投递会话（没有绑定就不投递：/m7/ask 明确 409，不猜「最近活跃」）。
+        # 优先取插件自己的 data\settings.json；这里只是「设置文件没配过」时的兜底。
+        # 两处都空 = 未绑定 = 手机消息不投递。
+        sessionId: ''
+        # 设置文件路径；留空 = DSH_HOME\phone-bridge\settings.json（DSH_HOME 缺省 ~/.dsh）
+        # 默认目录建不出来时降级到 <插件目录>\data\settings.json，面板状态里会带原因
+        settingsFile: ''
+        requestTimeoutMs: 180000
+        # ---- channel-server 托管（设置页「语音通道」）----
+        # channel-server 目录；留空 = 插件自带的 channel-server（自包含安装，复制进 profile 也能用）
+        # 开发时仓库布局可填 ..\channel-server 的绝对路径；相对路径会被忽略（面板状态里说原因）。
+        # 填绝对路径但目录里没有 server.js 会报 script-missing。
+        # .env（PHONE_BRIDGE_TOKEN / DEEPSEEK_API_KEY）从这个目录读；缺 token 会自动生成并写回。
+        channelServerDir: ''
+        # channel-server 的监听端口（面板探测与访问 /admin 都走 127.0.0.1:这个端口）
+        channelPort: 8788
+        # 插件加载时自动拉起 channel-server；false = 只在面板里手动启停
+        autoStart: true
+        # 自动拉起的最多次数（1s/2s/5s/10s/20s 退避；稳定跑 60s 后清零）
+        maxRestarts: 5
+        # 托管进程用哪个 node；留空 = 自动（宿主是 node 用它，Electron 用 ELECTRON_RUN_AS_NODE，兜底 PATH 里的 node）
+        nodePath: ''

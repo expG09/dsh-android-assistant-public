@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DSH砚砚助手</string>
+    <string name="title_status">服务状态</string>
+    <string name="label_service">服务</string>
+    <string name="label_started_at">启动时间</string>
+    <string name="label_battery">电池优化</string>
+    <string name="label_notification">通知已开启</string>
+    <string name="label_notif_title">通知标题</string>
+    <string name="label_notif_text">通知文案</string>
+    <string name="btn_start">启动常驻服务</string>
+    <string name="btn_stop">停止常驻服务</string>
+    <string name="btn_pause">暂停</string>
+    <string name="btn_resume">继续</string>
+    <string name="btn_battery">申请忽略电池优化</string>
+    <string name="btn_save_notif">保存通知文案</string>
+    <string name="btn_vivo_autostart">打开系统自启动设置</string>
+    <string name="label_autostart">开机自启</string>
+    <string name="section_status">状态</string>
+    <string name="section_actions">操作</string>
+    <string name="section_config">通知文案</string>
+
+    <!-- M3a 监听与录音 -->
+    <string name="section_listen">监听与录音</string>
+    <string name="label_listen_state">监听状态</string>
+    <string name="label_listen_switch">监听开关（关闭时不占用麦克风）</string>
+    <string name="hint_listen_off">开关是关的：不会创建录音设备，麦克风留给别的应用。</string>
+    <string name="hint_listen_on">正在占用麦克风；其他应用录音时会自动暂停，对方结束后自动恢复。</string>
+    <string name="btn_hold_talk">按住说话</string>
+    <string name="hint_hold_talk">按住按钮开始录音，松开结束；最长 60 秒，连续静音 1.5 秒自动结束。录音中「停止」按钮会变可用，点一下立刻收尾并上传。</string>
+    <string name="hint_listen_need_switch">先打开上面的监听开关，再按住说话。</string>
+
+    <!-- M3b 唤醒词 -->
+    <string name="label_wake_prompt">唤醒后应一声（「我在 / 嗯？ / 在呢」随机一句，默认开）</string>
+    <string name="btn_stop_recording">停止</string>
+    <string name="btn_clear_recordings">立即清理（录音 + 语音缓存）</string>
+
+    <!-- M2 通道 -->
+    <string name="section_channel">通道</string>
+    <string name="btn_pair_page">打开配对页</string>
+    <string name="btn_debug_page">打开调试页</string>
+
+    <string name="title_pair">配对通道</string>
+    <string name="label_server_url">电脑端地址</string>
+    <string name="hint_server_url">ws://192.168.1.100:8788</string>
+    <string name="label_pair_code">6 位配对码</string>
+    <string name="hint_pair_code">电脑端启动时打印的 6 位数字</string>
+    <string name="btn_pair_connect">连接</string>
+    <string name="pair_help">电脑端运行 channel-server 后会打印一个 6 位码，5 分钟内有效、用一次就失效。\n手机与电脑要在同一个局域网，或用 adb reverse 把 8788 端口转过来（这时地址填 ws://127.0.0.1:8788）。</string>
+
+    <string name="title_debug">通道调试</string>
+    <string name="hint_message">输入一条文本，发给电脑端</string>
+    <string name="btn_send">发送</string>
+    <string name="btn_reconnect">重新连接</string>
+    <string name="debug_help">发出的和收到的都会带时间戳显示在下面；断线时会显示「重连中…」。\n按住说话录完后会自动上传：显示「上传中…」→「识别中…」→「语音：识别文字」；失败时点那一行即可重试一次。</string>
+    <string name="debug_voice_prefix">语音</string>
+
+    <!-- M5 命令执行：主界面只显示一行结果 -->
+    <string name="hint_no_command_yet">最近命令：还没有执行过命令</string>
+    <string name="debug_command_prefix">命令</string>
+
+    <!-- M5c 悬浮窗（SYSTEM_ALERT_WINDOW 浮层 + 后台可弹界面） -->
+    <string name="section_overlay">悬浮窗</string>
+    <string name="label_overlay_switch">开启悬浮窗（可拖动，任意界面按住说话）</string>
+    <string name="hint_overlay_on">浮层在屏幕上：按住下边的「按住说话」录音、松手结束；录音中（含唤醒词自动开录）那个按钮会变成「停止」，点一下立刻收尾上传。拖上边的状态条可移动，拖到左右边缘会自动吸附，位置会记住；点状态条看最近一条命令。</string>
+    <string name="hint_overlay_off">浮层没显示：后台收到的命令只能发一条通知，点通知才能打开界面。</string>
+    <!-- decision.md 要求这句不改口径，出现在设置页与浮窗开关下面 -->
+    <string name="hint_overlay_degrade">未开启悬浮窗时，后台无法弹出命令界面，必须手动打开 App 后才能执行推送类操作。</string>
+    <string name="overlay_status_idle">空闲</string>
+    <string name="overlay_hold_btn">按住说话</string>
+    <!-- 录音中（按住触发或唤醒词触发）按钮同一位置换成「停止」，点一下立刻收尾并上传 -->
+    <string name="overlay_stop_btn">停止</string>
+    <string name="overlay_no_command">最近：—</string>
+    <string name="overlay_cmd_prefix">最近：%1$s</string>
+
+    <!-- M5b 主页快捷栏：点一下直接开，长按换应用，空槽显示「+」 -->
+    <string name="section_quick_slots">快捷栏</string>
+    <string name="hint_quick_slots">点一下直接打开 · 长按换应用</string>
+    <string name="quick_slot_empty">未设置</string>
+    <string name="quick_slot_missing">%1$s\n已卸载</string>
+    <string name="quick_slot_picker_title">第 %1$d 格：选一个应用</string>
+    <string name="quick_slot_search_hint">搜索应用名</string>
+    <string name="quick_slot_clear">清空此格</string>
+    <string name="quick_slot_cancel">取消</string>
+    <string name="quick_slot_replaced">第 %1$d 格已换成「%2$s」</string>
+    <string name="quick_slot_cleared">第 %1$d 格已清空</string>
+    <string name="quick_slot_gone">「%1$s」已经不在手机上了，长按换个应用</string>
+    <string name="quick_slot_launch_failed">打不开「%1$s」：%2$s</string>
+    <string name="quick_slot_no_apps">没扫到可启动的应用</string>
+
+    <!-- M6a 语音回复（TTS）设置：主界面只留一个入口按钮，开关/音色/缓存都在这个二级页 -->
+    <string name="section_settings">设置</string>
+    <string name="btn_voice_settings">语音回复设置</string>
+    <string name="title_voice_settings">语音回复设置</string>
+    <string name="section_speak">语音回复</string>
+    <string name="label_speak_switch">语音回复（回复文字的同时念出来，默认开）</string>
+    <string name="hint_speak_on">开着：电脑把回复按句合成，手机这边边收边播。录音开始或喊唤醒词会立刻停播。</string>
+    <string name="hint_speak_off">关着：只有文字，电脑端一次语音请求都不会发（不产生费用）。</string>
+    <string name="label_voice">音色</string>
+    <string name="voice_stella">stella · 女声（默认）</string>
+    <string name="voice_tide">tide · 男声</string>
+    <string name="btn_voice_audition">试听当前音色</string>
+    <string name="hint_voice_audition">点「试听」会让电脑端合成一句固定的话，手机收到就播（这条不受总开关限制，方便先听再决定）。</string>
+    <string name="tts_audition_playing">试听中…（电脑合成完就播）</string>
+    <string name="tts_audition_done">试听播放完毕</string>
+    <string name="tts_audition_not_connected">通道没连上：先去配对页连上电脑，再试听</string>
+    <string name="tts_audition_failed">试听失败（电脑端没合成，看看电脑端日志）</string>
+    <string name="section_tts_cache">语音缓存</string>
+    <string name="tts_usage_placeholder">语音缓存占用：—</string>
+    <string name="tts_usage">语音缓存占用：%1$d 段 · %2$s（保留期 %3$s）</string>
+    <string name="label_tts_keep">保留期</string>
+    <string name="tts_keep_7">保留 7 天（默认）</string>
+    <string name="tts_keep_30">保留 30 天</string>
+    <string name="tts_keep_never">不自动删</string>
+    <string name="tts_keep_label_7">7 天</string>
+    <string name="tts_keep_label_30">30 天</string>
+    <string name="tts_keep_label_never">不自动删</string>
+    <string name="btn_clear_tts">立即清理语音缓存</string>
+    <string name="hint_tts_cache">总量超过 500 MB 时也会按最旧开始删，不会无限占空间；正在播的那段不会被删。</string>
+    <string name="hint_tts_how_it_works">重播读的是本地缓存，不会再向电脑要一次语音；聊天/调试页里电脑的那条回复右边有 ▶ 图标，点一下重播。你的录音和识别文字不会被念出来。</string>
+    <string name="tts_play_desc">重播这条语音</string>
+    <string name="tts_stop_desc">停止播放</string>
+    <string name="tts_cleared">已清理 %1$d 个语音缓存文件</string>
+    <string name="tts_cache_empty">没有可清理的语音缓存</string>
+    <string name="tts_nothing_to_replay">这条回复没有可重播的语音缓存</string>
+</resources>

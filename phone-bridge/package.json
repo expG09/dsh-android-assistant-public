@@ -1,0 +1,45 @@
+{
+  "name": "@local/phone-bridge",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Answers the phone channel with this machine's live DSH session over a keyed loopback HTTP endpoint; hosts channel-server and serves the \"语音通道\" settings panel",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib/*.mjs",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "README.md",
+    "icon.svg",
+    "selfcheck.mjs",
+    "channel-server/server.js",
+    "channel-server/bridge.js",
+    "channel-server/intent.js",
+    "channel-server/tts.js",
+    "channel-server/package.json",
+    "channel-server/package-lock.json",
+    "channel-server/README.md",
+    "channel-server/.env.example",
+    "channel-server/node_modules/ws/**"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-settings-plugins"
+      ]
+    }
+  }
+}

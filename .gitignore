@@ -1,0 +1,58 @@
+# ---- Android / Gradle ----
+.gradle/
+.kotlin/
+build/
+*/build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# ---- 本项目的工具链（几百兆，绝不进仓库）----
+../_toolchain/
+_toolchain/
+
+# ---- IDE ----
+.idea/
+*.iml
+.vscode/
+
+# ---- 系统与本地环境 ----
+.env
+*.local
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---- 运行产物与日志 ----
+*.log
+logs/
+out/
+*.wav
+!docs/report/audio/**/*.wav
+*.mp3
+*.png.bak
+
+# ---- 任何可能夹带密钥的东西 ----
+*.pem
+*.p12
+credentials*
+*secret*
+*token*
+
+# ---- Node（通道服务）----
+node_modules/
+# ---- phone-bridge（自包含：channel-server 就在插件里）----
+phone-bridge/channel-server/.env
+phone-bridge/channel-server/data/
+phone-bridge/channel-server/tmp/
+phone-bridge/data/
+# 例外：phone-bridge 自带 vendor 的 ws（别人拿到插件目录不用 npm install）
+!phone-bridge/channel-server/node_modules/
+!phone-bridge/channel-server/node_modules/**
+
+npm-debug.log*

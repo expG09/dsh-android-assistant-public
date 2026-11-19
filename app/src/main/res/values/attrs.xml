@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  M6 主题色板：所有界面颜色都走这几个自定义属性，深浅两套主题各给一组值。
+  layout 里写 ?attr/yyXxx，代码里用 ThemeManager.color(ctx, R.attr.yyXxx)。
+  这样切换主题只需要换 theme，不用改任何布局。
+-->
+<resources>
+    <attr name="yyBg" format="color" />
+    <attr name="yySurface" format="color" />
+    <attr name="yySurfaceAlt" format="color" />
+    <attr name="yyText" format="color" />
+    <attr name="yyTextSecondary" format="color" />
+    <attr name="yyDivider" format="color" />
+    <attr name="yyAccent" format="color" />
+    <attr name="yyBubbleHim" format="color" />
+    <attr name="yyBubbleHimText" format="color" />
+    <attr name="yyBubbleMe" format="color" />
+    <attr name="yyBubbleMeText" format="color" />
+    <attr name="yyIcon" format="color" />
+    <attr name="yyHoldBg" format="color" />
+    <attr name="yyHoldText" format="color" />
+    <attr name="yyDanger" format="color" />
+    <attr name="yyOk" format="color" />
+    <attr name="yyWarn" format="color" />
+</resources>

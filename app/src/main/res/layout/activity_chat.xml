@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  M6 聊天页：极简顶栏（返回 + 状态点 + 设置齿轮）+ 消息列表 + 底部输入区（QQ 形态）。
+  底部输入区：左下角一个键在「语音 / 键盘」之间切换；语音态输入框位置变成一条「按住 说话」；
+  右侧键盘态是发送键、语音态是加号占位。颜色全部走主题属性 / 代码里按主题取。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_chat_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/yyBg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_topbar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/yyDivider" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/lv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:overScrollMode="ifContentScrolls"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:scrollbars="none"
+            android:stackFromBottom="true"
+            android:transcriptMode="normal" />
+
+        <TextView
+            android:id="@+id/tv_chat_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:text="还没有消息。\n按住下边说话，或点键盘输入。"
+            android:textColor="?attr/yyTextSecondary"
+            android:textSize="14sp" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/yyDivider" />
+
+    <LinearLayout
+        android:id="@+id/ll_chat_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/yyBg"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="4dp"
+        android:paddingBottom="6dp">
+
+        <ImageButton
+            android:id="@+id/btn_input_mode"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="切换语音 / 键盘"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_mic" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:minHeight="48dp">
+
+            <EditText
+                android:id="@+id/et_chat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:hint="说点什么…"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLines="3"
+                android:minHeight="44dp"
+                android:paddingStart="14dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="10dp"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/btn_hold_talk_chat"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="按住 说话"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/btn_chat_send"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="发送"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_send" />
+    </LinearLayout>
+</LinearLayout>
