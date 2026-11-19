@@ -13,8 +13,8 @@ android {
         applicationId = "com.yanyan.assistant"
         minSdk = 26
         targetSdk = 36
-        versionCode = 14
-        versionName = "0.9.0-M6"
+        versionCode = 15
+        versionName = "0.9.1"
 
         // M3b：sherpa-onnx 的 AAR 自带 4 个 ABI 的 .so（arm64 约 31 MB，其余 ABI 用不上）。
         // 真机是 arm64-v8a，只打这一份，APK 才不会白白大一百多兆。

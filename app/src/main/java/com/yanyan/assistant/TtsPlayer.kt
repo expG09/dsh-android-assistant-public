@@ -437,12 +437,20 @@ object TtsPlayer : ChannelListener {
                 resumeReplayFromFocus()
             }
             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT -> {
-                Log.i(TAG, "音频焦点被短暂拿走（LOSS_TRANSIENT，例如通知音）→ 暂停，等 GAIN 续播")
-                session?.pauseForFocus()
-                pauseReplayForFocus()
+                // 通话中才该停（等对方说完）；非通话时多半是通知音，暂停听起来像"播一下断一下"，
+                // 所以改成压低继续——2026-11-20 按用户反馈调整。
+                if (isInCall()) {
+                    Log.i(TAG, "音频焦点被短暂拿走（LOSS_TRANSIENT，通话中）→ 暂停，等 GAIN 续播")
+                    session?.pauseForFocus()
+                    pauseReplayForFocus()
+                } else {
+                    Log.i(TAG, "音频焦点被短暂拿走（LOSS_TRANSIENT，非通话）→ 压低继续，不打断")
+                    session?.duckForFocus()
+                    duckReplayForFocus()
+                }
             }
             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK -> {
-                Log.i(TAG, "音频焦点被短暂拿走（CAN_DUCK）→ 压到 25% 继续念")
+                Log.i(TAG, "音频焦点被短暂拿走（CAN_DUCK）→ 压到 ${(FOCUS_DUCK_VOLUME * 100).toInt()}% 继续念")
                 session?.duckForFocus()
                 duckReplayForFocus()
             }
@@ -457,6 +465,12 @@ object TtsPlayer : ChannelListener {
             }
             else -> Log.i(TAG, "收到未知音频焦点事件 $change，忽略")
         }
+    }
+
+    /** 是否在通话中（含 VoIP）。不在通话时，短暂失去焦点多半是通知音，压低继续比暂停自然。 */
+    private fun isInCall(): Boolean {
+        val mode = audioManager?.mode ?: return false
+        return mode == AudioManager.MODE_IN_CALL || mode == AudioManager.MODE_IN_COMMUNICATION
     }
 
     private fun pauseReplayForFocus() {
